@@ -11,9 +11,14 @@ interface RepoDao {
 
     @Query("SELECT * FROM DatabaseRepo")
     fun getLocalDBRepos(): LiveData<List<DatabaseRepo>>
+
+    @Query ("SELECT * FROM DatabaseRepo")
+    fun getSearchedRepoByName(): List<DatabaseRepo>
+
+
 }
 
-@Database(entities = [DatabaseRepo::class], version = 3, exportSchema = false)
+@Database(entities = [DatabaseRepo::class], version = 4, exportSchema = false)
 abstract class RepoDatabase : RoomDatabase() {
     abstract val repoDao: RepoDao
 }
